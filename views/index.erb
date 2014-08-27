@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Slacker News</title>
+  <link href="app.css" media="screen" rel="stylesheet"/>
+</head>
+<body>
+    <!-- This is where the page content goes -->
+<div class="wrapper">
+
+  <div class="navigation-container">
+
+  <h4 class="nav">Slacker News</h4>
+    <ul class= "nav">
+      <li>
+        <a href="#">new</a>
+      </li>
+      <li>
+        <a href="#">comments</a>
+      </li>
+      |
+      <li>
+        <a href="#">show</a>
+      </li>
+      |
+      <li>
+        <a href="#">ask</a>
+      </li>
+      |
+      <li>
+        <a href="#">jobs</a>
+      </li>
+      |<li>
+        <a href="/submit">submit</a>
+      </li>
+    </ul>
+    <p class="login">login</p>
+  </div>
+
+  <!-- div class="search-container">
+
+    <form>
+      <label>Shmoogle</label>
+      <input type="search" name="search">
+      <input type="submit" value="Search">
+    </form>
+  </div>
+
+  <div class="filters-container">
+
+  </div> -->
+
+  <div class="main-container">
+    <ol>
+      <% @articles.each do |article|  %>
+      <li><%= article["name"]%> - <%= article["description"]%>  <a href="http://<%= article["url"]%>" target="_blank">(<%= article["url"]%>)</a></li>
+      <% end %>
+
+
+    </ol>
+  </div>
+    </ul>
+  </div>
+</body>
+</html>
