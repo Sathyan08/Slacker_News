@@ -54,7 +54,7 @@
   <div class="main-container">
     <ol>
       <% @articles.each do |article|  %>
-      <li><%= article["name"]%> - <%= article["description"]%>  <a href="http://<%= article["url"]%>" target="_blank">(<%= article["url"]%>)</a></li>
+      <li><%= article["name"]%> - <%= article["description"]%>  <a href="http://<%= article["url"]%>" target="_blank">(<%= article["url"]%>)</a>   <a href="/comments/<%= article["id"] %>">comments</a></li>
       <% end %>
 
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Slacker News</title>
+  <link href="app.css" media="screen" rel="stylesheet"/>
+</head>
+<body>
+    <!-- This is where the page content goes -->
+<div class="wrapper">
+
+  <div class="navigation-container">
+
+  <h4 class="nav">Slacker News</h4>
+    <ul class= "nav">
+      <li>
+        <a href="#">new</a>
+      </li>
+      <li>
+        <a href="#">comments</a>
+      </li>
+      |
+      <li>
+        <a href="#">show</a>
+      </li>
+      |
+      <li>
+        <a href="#">ask</a>
+      </li>
+      |
+      <li>
+        <a href="#">jobs</a>
+      </li>
+      |<li>
+        <a href="/submit">submit</a>
+      </li>
+    </ul>
+    <p class="login">login</p>
+  </div>
+
+
+  <div class="main-container">
+
+    <ul>
+      <% if @error_messages.length > 0 %>
+        <% @error_messages.each do |message|%>
+        <li><%= message%></li>
+        <% end %>
+        <% end %>
+    </ul>
+
+    <h3><%= @article[0]["name"] %></h3>
+    <p>Comments: </p>
+
+    <ol><% @comments.each do |comment| %>
+          <% if comment['reference_article'] == @article[0]["id"] %>
+            <li>Name: <%= comment['commenter'] %>
+                Comment: <%= comment['contents'] %></li>
+            <% end %>
+        <% end %>
+    </ol>
+
+
+
+    <form action ="/comments/<%= @id %>" method="post">
+    <label for="commenter">Your name</label>
+      <input type="text" id="commenter" name="commenter" value="<%= @commenter %>" /><br>
+
+    <label for="description_comment">Your Comment</label>
+      <textarea id="description_comment" name="description_comment" value="<%= @description_comment %>" /></textarea><br>
+
+      <input type="submit" />
+  </form>
+
+
+</body>
+</html>
