@@ -163,7 +163,13 @@ post '/comments/:id' do
   if error_messages == nil || error_messages.length == 0
     db_connection do |conn|
       conn.exec('INSERT INTO comments (commenter, contents, reference_article) VALUES ($1, $2, $3);', [commenter, description_comment, @id.to_i])
+      @article = conn.exec('SELECT * FROM articles WHERE id = $1', [@id])
+      @comments = conn.exec('SELECT * FROM comments')
     end
+
+  @commenter = ''
+  @description = ''
+  @error_messages = []
 
   else
     @commenter = commenter
@@ -176,10 +182,9 @@ post '/comments/:id' do
       @comments = conn.exec('SELECT * FROM comments')
     end
 
-    redirect '/'
   end
 
-
+   erb :comments
 end
 
 
